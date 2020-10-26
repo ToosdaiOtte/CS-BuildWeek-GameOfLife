@@ -23,6 +23,7 @@ class Game extends React.Component {
     }
 
     makeEmptyBoard() {
+        // set board rows and columns to empty/0
         let board = [];
         for (let y = 0; y < this.rows; y++) {
             board[y] = [];
@@ -60,13 +61,14 @@ class Game extends React.Component {
 
     handleClick = (event) => {
 
+        // retrieve click position
         const elemOffset = this.getElementOffset();
         const offsetX = event.clientX - elemOffset.x;
         const offsetY = event.clientY - elemOffset.y;
-        
+        // convert to relative position
         const x = Math.floor(offsetX / Constants.CELL_SIZE);
         const y = Math.floor(offsetY / Constants.CELL_SIZE);
-
+        // calculate cols and rows of cell being clicked
         if (x >= 0 && x <= this.cols && y >= 0 && y <= this.rows) {
             this.board[y][x] = !this.board[y][x];
         }
@@ -151,11 +153,13 @@ class Game extends React.Component {
 
         this.setState({ cells: this.makeCells() });
     }
-    // working in progress
-    // handleNext = () => {
-    //     this.runIteration()
-    //     genCount += 1
-    // }
+    handleNext = () => {
+        // start iteration
+        this.setState({ isRunning: true })
+        this.runIteration()
+        // stop iteration
+        this.stopGame()
+    }
 
     render() {
         const { cells, interval, isRunning } = this.state;
@@ -178,7 +182,7 @@ class Game extends React.Component {
                         <button className="button" onClick={this.stopGame}>Stop</button> :
                         <button className="button" onClick={this.runGame}>Run</button>
                     }
-                    {/* <button className="button" onClick={this.handleNext}>Next</button> */}
+                    <button className="button" onClick={this.handleNext}>Next</button>
                     <button className="button" onClick={this.handleRandom}>Random</button>
                     <button className="button" onClick={this.handleClear}>Clear</button>
                 </div>
