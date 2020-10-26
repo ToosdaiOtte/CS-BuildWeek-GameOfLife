@@ -4,9 +4,9 @@ import Constants from './Constants.js';
 class Cell extends React.Component {
 
     render() {
-        const { x, y } = this.props;
+        const { x, y, } = this.props;
         return (
-            <div className="Cell" style={{
+            <div className={this.props.darkMode ? "darkModeCell" : "Cell"} style={{
                 left: `${Constants.CELL_SIZE * x + 1}px`,
                 top: `${Constants.CELL_SIZE * y + 1}px`,
                 width: `${Constants.CELL_SIZE - 1}px`,

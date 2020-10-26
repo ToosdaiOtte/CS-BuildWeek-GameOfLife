@@ -20,6 +20,7 @@ class Game extends React.Component {
         cells: [],
         isRunning: false,
         interval: 100,
+        darkMode: false,
     }
 
     makeEmptyBoard() {
@@ -160,19 +161,26 @@ class Game extends React.Component {
         // stop iteration
         this.stopGame()
     }
+    handleDarkMode= () => {
+        if(this.state.darkMode === true) {
+            this.setState({ darkMode: false })
+        } else {
+            this.setState({ darkMode: true })
+        }
+    }
 
     render() {
         const { cells, interval, isRunning } = this.state;
         return (
             <div>
                 <div>Generation: {genCount}</div>
-                <div className="Board"
+                <div className={this.state.darkMode ? "darkModeBoard" : "Board"}
                     style={{ width: Constants.WIDTH, height: Constants.HEIGHT, backgroundSize: `${Constants.CELL_SIZE}px ${Constants.CELL_SIZE}px`}}
                     onClick={this.handleClick}
                     ref={(n) => { this.boardRef = n; }}>
 
                     {cells.map(cell => (
-                        <Cell x={cell.x} y={cell.y} key={`${cell.x},${cell.y}`}/>
+                        <Cell darkMode={this.state.darkMode} x={cell.x} y={cell.y} key={`${cell.x},${cell.y}`}/>
                     ))}
                 </div>
 
@@ -185,6 +193,7 @@ class Game extends React.Component {
                     <button className="button" onClick={this.handleNext}>Next</button>
                     <button className="button" onClick={this.handleRandom}>Random</button>
                     <button className="button" onClick={this.handleClear}>Clear</button>
+                    <button className="button" onClick={this.handleDarkMode}>Dark Mode</button>
                 </div>
                 <div className="rules">
                     <Rules />

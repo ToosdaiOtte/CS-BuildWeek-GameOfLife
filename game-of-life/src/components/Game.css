@@ -9,8 +9,24 @@
         linear-gradient(90deg, #000 1px, transparent 1px);
 }
 
+.darkModeBoard {
+    position: relative;
+    margin: 0 auto;
+    border: 2px solid #fff;
+    background-color: #000;
+    /* Create grid */
+    background-image: 
+        linear-gradient(#fff 1px, transparent 1px), 
+        linear-gradient(90deg, #fff 1px, transparent 1px);
+}
+
 .Cell {
     background: #000;
+    position: absolute;
+}
+
+.darkModeCell {
+    background: #fff;
     position: absolute;
 }
 
