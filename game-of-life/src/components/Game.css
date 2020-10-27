@@ -1,0 +1,44 @@
+.Board {
+    position: relative;
+    margin: 0 auto;
+    border: 2px solid #000;
+    background-color: #fff;
+    /* Create grid */
+    background-image: 
+        linear-gradient(#000 1px, transparent 1px), 
+        linear-gradient(90deg, #000 1px, transparent 1px);
+}
+
+.darkModeBoard {
+    position: relative;
+    margin: 0 auto;
+    border: 2px solid #fff;
+    background-color: #000;
+    /* Create grid */
+    background-image: 
+        linear-gradient(#fff 1px, transparent 1px), 
+        linear-gradient(90deg, #fff 1px, transparent 1px);
+}
+
+.Cell {
+    background: #000;
+    position: absolute;
+}
+
+.darkModeCell {
+    background: #fff;
+    position: absolute;
+}
+
+.controls {
+    margin-top: 20px;
+}
+
+.button {
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+.container {
+    margin: 3% 25%;
+}
